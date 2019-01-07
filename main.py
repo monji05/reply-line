@@ -27,6 +27,8 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
+from linebot.exceptions import LineBotApiError
+
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
@@ -68,6 +70,17 @@ def message_text(event):
         TextSendMessage(text=event.message.text)
     )
 
+@app.route(/profile,GET=['POST'])
+def get_profile():
+    try:
+        profile = line_bot_api.get_profile('mishina4869')
+        print(profile.display_name)
+        print(profile.user_id)
+        print(profile.picture_url)
+        print(profile.status_message)
+    except LineBotApiError as e:
+        # error handle
+        print("your profile can't get")
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
