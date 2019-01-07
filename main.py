@@ -70,7 +70,7 @@ def message_text(event):
         TextSendMessage(text=event.message.text)
     )
 
-@app.route(/profile,GET=['POST'])
+@app.route("/profile",GET=['POST'])
 def get_profile():
     try:
         profile = line_bot_api.get_profile('mishina4869')
