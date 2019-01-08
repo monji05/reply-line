@@ -70,6 +70,11 @@ def message_text(event):
             event.reply_token,
             TextSendMessage(text="おはようございます！今日も1日頑張りましょう！")
         )
+    if "入力" == text:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=input("ご用件をどうぞ:"))
+        )
 
     else:
         line_bot_api.reply_message(
