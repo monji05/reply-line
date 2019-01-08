@@ -62,25 +62,22 @@ def callback():
 
     return 'OK'
 
-
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
+    text=event.message.text
+    if "おはよう" in text:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="おはようございます！")
+        )
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text)
+        )
 
-@app.route("/profile",GET=['POST'])
-def get_profile():
-    try:
-        profile = line_bot_api.get_profile('mishina4869')
-        print(profile.display_name)
-        print(profile.user_id)
-        print(profile.picture_url)
-        print(profile.status_message)
-    except LineBotApiError as e:
-        # error handle
-        print("your profile can't get")
+
+
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
