@@ -68,8 +68,9 @@ def message_text(event):
     if "おはよう" in text:
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="おはようございます！")
+            TextSendMessage(text="おはようございます！今日も1日頑張りましょう！")
         )
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
