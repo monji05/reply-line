@@ -70,7 +70,16 @@ def message_text(event):
             event.reply_token,
             TextSendMessage(text="おはようございます！今日も1日頑張りましょう！")
         )
-
+    elif "おやすみ"　in text:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="今日もお疲れ様でした、おやすみなさい")
+        )
+    elif "疲れた"　in text:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="無理しないで、休んでください")
+        )
     else:
         line_bot_api.reply_message(
             event.reply_token,
